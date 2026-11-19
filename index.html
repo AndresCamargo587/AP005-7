@@ -1,0 +1,288 @@
+<!DOCTYPE html> <!-- Le dice al navegador que esta página está escrita en HTML5 -->
+<html lang="es"> <!-- Abre la página web y marca que el idioma principal es español -->
+<head> <!-- Abre la zona de configuración y estilos (no se ve como texto en la página) -->
+  <meta charset="UTF-8"> <!-- Permite que se vean bien las tildes, la "ñ" y símbolos especiales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página se adapte bien a celulares, tablets y computadores -->
+  <title>Guía Básica de HTML - Repo AP005-7</title> <!-- Pone el nombre que aparece en la pestaña del navegador -->
+  <style> <!-- Empieza la sección de diseño visual (CSS) -->
+    /* Estilos sencillos para que la página sea clara y legible */
+    body { <!-- Aplica estos estilos a todo el cuerpo visible de la página -->
+      font-family: Arial, sans-serif; <!-- Usa la letra Arial (o una parecida si no está disponible) -->
+      line-height: 1.6; <!-- Da un buen espacio entre renglones para leer más cómodo -->
+      max-width: 850px; <!-- Evita que la página se estire demasiado en pantallas muy anchas -->
+      margin: 0 auto; <!-- Centra la página horizontalmente en la pantalla -->
+      padding: 20px; <!-- Deja un margen por dentro de 20 píxeles en los bordes -->
+      background-color: #f4f6f9; <!-- Pinta el fondo general de un gris muy suave -->
+      color: #222; <!-- Pone las letras en un gris oscuro casi negro -->
+    } <!-- Termina el diseño del cuerpo -->
+
+    header, nav, main, footer { <!-- Aplica el mismo estilo de tarjeta a estas cuatro partes de la página -->
+      background: #ffffff; <!-- Pone fondo blanco a cada bloque -->
+      padding: 18px; <!-- Agrega espacio por dentro de cada bloque -->
+      margin-bottom: 16px; <!-- Separa un bloque del que sigue hacia abajo -->
+      border-radius: 8px; <!-- Redondea un poco las esquinas de cada bloque -->
+      border: 1px solid #ddd; <!-- Dibuja un borde fino de color gris claro -->
+    } <!-- Termina el diseño de esos bloques -->
+
+    nav a { <!-- Estiliza los enlaces del menú de navegación -->
+      margin-right: 12px; <!-- Separa cada enlace del siguiente hacia la derecha -->
+      text-decoration: none; <!-- Quita la línea subrayada típica de los enlaces -->
+      color: #0b5ed7; <!-- Pinta los enlaces de azul -->
+      font-weight: bold; <!-- Pone el texto de los enlaces en negrita -->
+    } <!-- Termina el diseño de los enlaces del menú -->
+
+    /* Botones que enlazan a GitHub */
+    .btn-github { <!-- Diseño para los botones que llevan a GitHub -->
+      display: inline-block; <!-- Permite darles tamaño y espacio como si fueran botones -->
+      background-color: #24292f; <!-- Pinta el botón de gris oscuro estilo GitHub -->
+      color: #ffffff; <!-- Pone el texto del botón en blanco -->
+      padding: 10px 16px; <!-- Da espacio interno arriba/abajo y a los lados -->
+      border-radius: 6px; <!-- Redondea un poco las esquinas del botón -->
+      text-decoration: none; <!-- Quita el subrayado del enlace -->
+      font-weight: bold; <!-- Resalta el texto del botón en negrita -->
+      margin: 6px 6px 6px 0; <!-- Da separación por fuera alrededor del botón -->
+    } <!-- Termina el diseño de los botones de GitHub -->
+
+    .btn-github:hover { <!-- Cambia el botón cuando pasas el cursor del ratón por encima -->
+      background-color: #0b5ed7; <!-- Vuelve el botón azul al pasar el ratón encima -->
+    } <!-- Termina el cambio al pasar el ratón -->
+
+    button { <!-- Diseño general para los botones normales de la página -->
+      padding: 8px 14px; <!-- Da espacio interno al texto del botón -->
+      border-radius: 6px; <!-- Redondea las esquinas del botón -->
+      border: 1px solid #0b5ed7; <!-- Pone un borde azul alrededor del botón -->
+      background-color: #0b5ed7; <!-- Rellena el botón de color azul -->
+      color: #fff; <!-- Pone las letras del botón en blanco -->
+      cursor: pointer; <!-- Muestra la manito al pasar el cursor sobre el botón -->
+      font-size: 14px; <!-- Define el tamaño de la letra del botón -->
+    } <!-- Termina el diseño de los botones -->
+
+    button.secundario { <!-- Diseño especial para el botón secundario de cerrar -->
+      background-color: #e9ecef; <!-- Cambia el fondo a gris claro -->
+      color: #222; <!-- Pone el texto en gris oscuro -->
+      border-color: #ccc; <!-- Cambia el borde a gris suave -->
+    } <!-- Termina el diseño del botón secundario -->
+
+    table { <!-- Diseño de la tabla -->
+      width: 100%; <!-- Hace que la tabla ocupe todo el ancho de su sección -->
+      border-collapse: collapse; <!-- Une los bordes de las celdas para que no se vean dobles -->
+      margin-top: 10px; <!-- Deja un pequeño espacio encima de la tabla -->
+    } <!-- Termina el diseño de la tabla -->
+
+    th, td { <!-- Diseño de las celdas de título y de datos de la tabla -->
+      border: 1px solid #ccc; <!-- Pone un borde gris a cada celda -->
+      padding: 8px; <!-- Da espacio por dentro de cada celda -->
+      text-align: left; <!-- Alinea el texto de cada celda hacia la izquierda -->
+    } <!-- Termina el diseño de las celdas -->
+
+    th { <!-- Diseño exclusivo para la fila de encabezados de la tabla -->
+      background-color: #eef2f7; <!-- Pinta de gris azulado claro los títulos de cada columna -->
+    } <!-- Termina el diseño de los encabezados de tabla -->
+
+    dialog { <!-- Diseño de la ventana emergente <dialog> -->
+      border: 1px solid #ccc; <!-- Pone un borde gris alrededor de la ventana emergente -->
+      border-radius: 8px; <!-- Redondea las esquinas de la ventana emergente -->
+      padding: 20px; <!-- Da espacio por dentro de la ventana emergente -->
+      max-width: 400px; <!-- Limita el ancho máximo de la ventana emergente a 400 píxeles -->
+    } <!-- Termina el diseño de la ventana emergente -->
+
+    dialog::backdrop { <!-- Diseño del fondo que aparece detrás cuando se abre la ventana emergente -->
+      background: rgba(0, 0, 0, 0.5); <!-- Oscurece un poco el resto de la página mientras está abierta la ventana -->
+    } <!-- Termina el diseño del fondo oscuro -->
+
+    #resultadoForm { <!-- Diseño del mensaje que aparece debajo del formulario -->
+      margin-top: 12px; <!-- Deja un espacio encima del mensaje de respuesta -->
+      font-weight: bold; <!-- Pone el mensaje en negrita -->
+      color: #0b5ed7; <!-- Pinta el mensaje de color azul -->
+    } <!-- Termina el diseño del mensaje de respuesta -->
+  </style> <!-- Termina la sección de diseño visual (CSS) -->
+</head> <!-- Cierra la zona de configuración -->
+<body> <!-- Abre el contenido visible de la página web -->
+
+  <!-- 1. ENCABEZADO Y BOTONES A GITHUB -->
+  <header> <!-- Parte superior de la página con título y botones principales -->
+    <h1>Temáticas Básicas de HTML5</h1> <!-- Título principal más grande de la página -->
+    <p>Página sencilla de ejemplo conectada al repositorio <strong>AP005-7</strong>.</p> <!-- Texto corto con "AP005-7" destacado en negrita -->
+
+    <!-- Botones directos al repositorio -->
+    <a class="btn-github" href="https://github.com/AndresCamargo587/AP005-7" target="_blank" rel="noopener noreferrer"> <!-- Botón que abre tu repositorio de GitHub en una pestaña nueva -->
+      Ver Repositorio AP005-7 <!-- Texto que se ve dentro del primer botón -->
+    </a> <!-- Cierra el primer botón -->
+    <a class="btn-github" href="https://github.com/AndresCamargo587/AP005-7/issues" target="_blank" rel="noopener noreferrer"> <!-- Botón que abre la sección de Issues de tu repositorio en una pestaña nueva -->
+      Ver Issues en GitHub <!-- Texto que se ve dentro del segundo botón -->
+    </a> <!-- Cierra el segundo botón -->
+  </header> <!-- Cierra el encabezado superior -->
+
+  <!-- 2. MENÚ DE NAVEGACIÓN -->
+  <nav> <!-- Barra con accesos rápidos para bajar a cada tema de la página -->
+    <a href="#texto">Texto</a> <!-- Lleva directamente a la sección de Texto -->
+    <a href="#listas-tablas">Listas y Tablas</a> <!-- Lleva directamente a la sección de Listas y Tablas -->
+    <a href="#multimedia">Imágenes</a> <!-- Lleva directamente a la sección de Imágenes -->
+    <a href="#formulario">Formulario</a> <!-- Lleva directamente a la sección de Formulario -->
+    <a href="#dialogos">Diálogos</a> <!-- Lleva directamente a la sección de Diálogos -->
+  </nav> <!-- Cierra el menú de navegación -->
+
+  <main> <!-- Abre el bloque principal donde van los temas de la guía -->
+    <!-- 3. FORMATO DE TEXTO -->
+    <section id="texto"> <!-- Primera sección, llamada "texto" para poder enlazarla desde el menú -->
+      <h2>1. Títulos y formato de texto</h2> <!-- Subtítulo de esta sección -->
+      <p> <!-- Abre un párrafo donde se muestran distintos formatos de texto -->
+        En HTML usamos párrafos (<code>&lt;p&gt;</code>), <strong>negrita</strong> (<code>&lt;strong&gt;</code>), <!-- Muestra cómo se ve un texto en negrita y escribe la etiqueta como ejemplo -->
+        <em>cursiva</em> (<code>&lt;em&gt;</code>) y <mark>resaltado</mark> (<code>&lt;mark&gt;</code>). <!-- Muestra texto en cursiva y texto resaltado como si tuviera marcador -->
+      </p> <!-- Cierra el párrafo -->
+      <blockquote> <!-- Abre un bloque pensado para citas o frases destacadas -->
+        “HTML define la estructura del contenido web; CSS le da estilo y JavaScript añade interacción.” <!-- Frase de ejemplo dentro de la cita -->
+      </blockquote> <!-- Cierra la cita -->
+    </section> <!-- Cierra la sección de texto -->
+
+    <hr> <!-- Dibuja una línea horizontal para separar visualmente las secciones -->
+
+    <!-- 4. LISTAS Y TABLAS -->
+    <section id="listas-tablas"> <!-- Segunda sección, llamada "listas-tablas" -->
+      <h2>2. Listas y tablas</h2> <!-- Subtítulo de esta sección -->
+      <h3>Lista ordenada de repaso</h3> <!-- Título pequeño para la lista numerada -->
+      <ol> <!-- Abre una lista numerada (1, 2, 3...) -->
+        <li>Estructura básica del documento</li> <!-- Primer punto de la lista -->
+        <li>Etiquetas de texto, enlaces e imágenes</li> <!-- Segundo punto de la lista -->
+        <li>Tablas, formularios y cajas de diálogo</li> <!-- Tercer punto de la lista -->
+      </ol> <!-- Cierra la lista numerada -->
+
+      <h3>Tabla rápida de etiquetas</h3> <!-- Título pequeño para la tabla -->
+      <table> <!-- Abre la tabla -->
+        <thead> <!-- Agrupa la fila de títulos de la tabla -->
+          <tr> <!-- Fila superior con los nombres de las columnas -->
+            <th>Etiqueta</th> <!-- Nombre de la primera columna -->
+            <th>Función principal</th> <!-- Nombre de la segunda columna -->
+          </tr> <!-- Cierra la fila de títulos -->
+        </thead> <!-- Cierra el encabezado de la tabla -->
+        <tbody> <!-- Agrupa las filas con la información de la tabla -->
+          <tr> <!-- Primera fila de datos -->
+            <td><code>&lt;a&gt;</code></td> <!-- Muestra la etiqueta "a" en la primera columna -->
+            <td>Crear enlaces o botones de navegación</td> <!-- Explica para qué sirve la etiqueta "a" -->
+          </tr> <!-- Cierra la primera fila -->
+          <tr> <!-- Segunda fila de datos -->
+            <td><code>&lt;img&gt;</code></td> <!-- Muestra la etiqueta "img" en la primera columna -->
+            <td>Mostrar imágenes en la página</td> <!-- Explica para qué sirve la etiqueta "img" -->
+          </tr> <!-- Cierra la segunda fila -->
+          <tr> <!-- Tercera fila de datos -->
+            <td><code>&lt;dialog&gt;</code></td> <!-- Muestra la etiqueta "dialog" en la primera columna -->
+            <td>Mostrar una ventana o caja de diálogo emergente</td> <!-- Explica para qué sirve la etiqueta "dialog" -->
+          </tr> <!-- Cierra la tercera fila -->
+        </tbody> <!-- Cierra el cuerpo de datos de la tabla -->
+      </table> <!-- Cierra la tabla -->
+    </section> <!-- Cierra la sección de listas y tablas -->
+
+    <hr> <!-- Dibuja una línea horizontal separadora -->
+
+    <!-- 5. IMÁGENES -->
+    <section id="multimedia"> <!-- Tercera sección, llamada "multimedia" -->
+      <h2>3. Imágenes y figura</h2> <!-- Subtítulo de esta sección -->
+      <figure> <!-- Agrupa una imagen junto con su descripción -->
+        <img src="https://picsum.photos/seed/html5guide/600/250" alt="Paisaje de ejemplo para ilustrar la etiqueta img" width="100%"> <!-- Carga una imagen de internet, da una descripción si no carga y ocupa todo el ancho disponible -->
+        <figcaption>Imagen cargada con <code>&lt;img&gt;</code> dentro de un <code>&lt;figure&gt;</code>.</figcaption> <!-- Pie de imagen que explica qué se está viendo -->
+      </figure> <!-- Cierra el bloque de imagen y descripción -->
+    </section> <!-- Cierra la sección de imágenes -->
+
+    <hr> <!-- Dibuja una línea horizontal separadora -->
+
+    <!-- 6. FORMULARIO -->
+    <section id="formulario"> <!-- Cuarta sección, llamada "formulario" -->
+      <h2>4. Formulario básico</h2> <!-- Subtítulo de esta sección -->
+      <form id="miFormulario"> <!-- Abre el formulario y le da el nombre "miFormulario" para controlarlo con JavaScript -->
+        <p> <!-- Agrupa la etiqueta y la caja donde se escribe el nombre -->
+          <label for="nombre">Nombre:</label><br> <!-- Texto "Nombre:" y un salto de línea para bajar a la caja -->
+          <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required> <!-- Caja para escribir texto, con texto guía y obligatoria para enviar -->
+        </p> <!-- Cierra el bloque del nombre -->
+        <p> <!-- Agrupa la etiqueta y la lista desplegable del tema -->
+          <label for="tema">Tema favorito:</label><br> <!-- Texto "Tema favorito:" y un salto de línea -->
+          <select id="tema" name="tema"> <!-- Lista desplegable para elegir una opción -->
+            <option value="Semántica">Semántica HTML</option> <!-- Primera opción disponible -->
+            <option value="Formularios">Formularios</option> <!-- Segunda opción disponible -->
+            <option value="Diálogos">Cajas de diálogo</option> <!-- Tercera opción disponible -->
+          </select> <!-- Cierra la lista desplegable -->
+        </p> <!-- Cierra el bloque del tema -->
+        <button type="submit">Enviar ejemplo</button> <!-- Botón que envía el formulario al hacer clic -->
+      </form> <!-- Cierra el formulario -->
+      <p id="resultadoForm" aria-live="polite"></p> <!-- Espacio vacío donde aparecerá el mensaje al enviar el formulario -->
+    </section> <!-- Cierra la sección del formulario -->
+
+    <hr> <!-- Dibuja una línea horizontal separadora -->
+
+    <!-- 7. CAJAS DE DIÁLOGO Y DESPLEGABLE -->
+    <section id="dialogos"> <!-- Quinta sección, llamada "dialogos" -->
+      <h2>5. Cajas de diálogo y acordeón nativo</h2> <!-- Subtítulo de esta sección -->
+
+      <!-- Botón que abre la caja <dialog> -->
+      <button type="button" id="abrirDialogo">Abrir caja de diálogo</button> <!-- Botón que al pulsarse abre la ventana emergente -->
+
+      <!-- Caja de diálogo nativa de HTML5 -->
+      <dialog id="miDialogo"> <!-- Ventana emergente propia de HTML5 -->
+        <h3>Caja de diálogo (&lt;dialog&gt;)</h3> <!-- Título dentro de la ventana emergente -->
+        <p>Esta ventana emergente funciona de forma nativa en HTML5 y se controla con JavaScript.</p> <!-- Explicación dentro de la ventana emergente -->
+        <p> <!-- Párrafo que contiene un botón hacia GitHub -->
+          <a class="btn-github" href="https://github.com/AndresCamargo587/AP005-7" target="_blank" rel="noopener noreferrer"> <!-- Botón dentro de la ventana emergente que lleva a tu repositorio -->
+            Ir a AP005-7 <!-- Texto del botón dentro de la ventana emergente -->
+          </a> <!-- Cierra ese botón -->
+        </p> <!-- Cierra el párrafo -->
+        <button type="button" class="secundario" id="cerrarDialogo">Cerrar</button> <!-- Botón para cerrar la ventana emergente -->
+      </dialog> <!-- Cierra la ventana emergente -->
+
+      <!-- Desplegable sin necesidad de JavaScript -->
+      <details style="margin-top: 16px;"> <!-- Caja plegable que se abre y cierra sola al hacer clic -->
+        <summary><strong>Ver nota rápida con &lt;details&gt;</strong></summary> <!-- Título visible en el que se hace clic para desplegar -->
+        <p>La etiqueta <code>&lt;details&gt;</code> abre y cierra contenido sin escribir JavaScript.</p> <!-- Texto oculto que se muestra al abrir -->
+      </details> <!-- Cierra la caja plegable -->
+    </section> <!-- Cierra la sección de diálogos -->
+  </main> <!-- Cierra el bloque principal -->
+
+  <!-- 8. PIE DE PÁGINA -->
+  <footer> <!-- Parte final de la página -->
+    <p>Repositorio: <a href="https://github.com/AndresCamargo587/AP005-7" target="_blank">AndresCamargo587/AP005-7</a></p> <!-- Texto con enlace directo al repositorio -->
+    <a class="btn-github" href="https://github.com/AndresCamargo587/AP005-7" target="_blank" rel="noopener noreferrer"> <!-- Botón final que también lleva al repositorio -->
+      Abrir GitHub <!-- Texto del botón final -->
+    </a> <!-- Cierra el botón final -->
+  </footer> <!-- Cierra el pie de página -->
+
+  <!-- 9. JAVASCRIPT MÍNIMO PARA INTERACCIÓN -->
+  <script> <!-- Abre el código JavaScript que hace que los botones y el formulario respondan -->
+    document.addEventListener("DOMContentLoaded", () => { <!-- Espera a que toda la página cargue antes de activar las acciones -->
+      // Controlar la caja de diálogo <dialog>
+      const dialogo = document.getElementById("miDialogo"); // Busca la ventana emergente en la página
+      const btnAbrir = document.getElementById("abrirDialogo"); // Busca el botón que abre la ventana
+      const btnCerrar = document.getElementById("cerrarDialogo"); // Busca el botón que cierra la ventana
+
+      if (dialogo && btnAbrir && btnCerrar) { // Comprueba que los tres elementos existan antes de usarlos
+        btnAbrir.addEventListener("click", () => { // Cuando se hace clic en "Abrir caja de diálogo"...
+          dialogo.showModal(); // ...muestra la ventana emergente en pantalla
+        }); // Termina la acción de abrir
+
+        btnCerrar.addEventListener("click", () => { // Cuando se hace clic en "Cerrar"...
+          dialogo.close(); // ...oculta la ventana emergente
+        }); // Termina la acción de cerrar
+      } // Termina la revisión de la ventana emergente
+
+      // Mostrar un mensaje al enviar el formulario sin recargar la página
+      const formulario = document.getElementById("miFormulario"); // Busca el formulario en la página
+      const resultado = document.getElementById("resultadoForm"); // Busca el párrafo donde se mostrará el saludo
+      const inputNombre = document.getElementById("nombre"); // Busca la caja donde se escribe el nombre
+      const selectTema = document.getElementById("tema"); // Busca la lista desplegable del tema
+
+      if (formulario && resultado && inputNombre && selectTema) { // Comprueba que todos los campos del formulario existan
+        formulario.addEventListener("submit", (evento) => { // Cuando se envía el formulario...
+          evento.preventDefault(); // ...evita que la página se recargue y borre todo
+          const nombre = inputNombre.value.trim(); // Toma el nombre escrito y quita espacios sobrantes al inicio o final
+          const tema = selectTema.value; // Toma el tema elegido en la lista desplegable
+
+          if (!nombre) { // Si el usuario dejó el campo vacío o solo puso espacios...
+            resultado.textContent = "Por favor escribe un nombre válido."; // ...muestra un aviso pidiendo un nombre
+            inputNombre.focus(); // Lleva el cursor de nuevo a la caja del nombre
+            return; // Detiene aquí para no mostrar el saludo incompleto
+          } // Termina la revisión del nombre vacío
+
+          resultado.textContent = `Hola ${nombre}, registraste el tema: ${tema}.`; // Escribe el mensaje final con el nombre y el tema elegido
+        }); // Termina la acción al enviar el formulario
+      } // Termina la revisión del formulario
+    }); // Termina la espera de carga de la página
+  </script> <!-- Cierra el código JavaScript -->
+</body> <!-- Cierra el contenido visible de la página -->
+</html> <!-- Cierra todo el documento HTML -->
